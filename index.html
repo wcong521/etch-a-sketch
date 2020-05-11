@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Etch-a-Sketch</title>
+    </head>
+    <body>
+
+        <div><h1>Etch-a-Sketch</h1></div>
+        <div id="subtitle">By William Cong</div>
+
+        <button id="change-size">Change Size</button>
+        <div class="grid-container"></div>
+
+        <div class="color-select-container">
+            <div class="color-select" id="random-color"><img src="assets/color-wheel.png"></div>
+            <div class="color-select" id="white" style="background-color: white;"></div>
+            <div class="color-select" id="maize" style="background-color: #E7BB41;"></div>
+            <div class="color-select" id="keppel" style="background-color: #44BBA4;"></div>
+        </div>
+
+        <script>
+            const grid_size = 700;
+            let res = 16; // 16 is default
+            let drawColor = "#44BBA4";
+            let randomize = false;
+
+            const grid_container = document.querySelector(".grid-container");
+
+            const white_btn = document.querySelector("#white");
+            white_btn.addEventListener("click", () => {
+                randomize = false;
+                drawColor = "white";
+            });
+
+            const maize_btn = document.querySelector("#maize");
+            maize_btn.addEventListener("click", (e) => {
+                randomize = false;
+                drawColor = "#E7BB41";
+            });
+
+            const keppel_btn = document.querySelector("#keppel");
+            keppel_btn.addEventListener("click", (e) => {
+                randomize = false;
+                drawColor = "#44BBA4";
+            });
+
+            const random_btn = document.querySelector("#random-color");
+            random_btn.addEventListener("click", (e) => {
+                randomize = true;
+            });
+
+
+            const btn = document.querySelector('#change-size');
+            btn.addEventListener('click', numPrompt);
+
+            createGridItems();
+
+            function draw() {
+                if (randomize) {
+                    drawColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                }
+                event.target.setAttribute('style', "background-color: " + drawColor + ";");
+            }
+
+            function createGridItems() {
+                for (let r = 0; r < res; r++) {
+                    for (let c = 0; c < res; c++) {
+                        let grid_item = document.createElement("div");
+                        grid_item.className = "grid-item";
+                        grid_item.addEventListener("mouseover", draw);
+                        grid_container.appendChild(grid_item);
+                    }
+                }
+            }
+
+            function clearBoard() {
+                let grid_item = document.querySelectorAll(".grid-item");
+                grid_item.forEach(item => item.setAttribute('style', 'background-color: white;'));
+            }
+
+            function numPrompt() {
+                res = prompt("Enter a new resolution: ", "16");
+                grid_container.style.cssText = "grid-template-columns: repeat(" + res + ", 1fr); grid-template-rows: repeat(" + res + ", 1fr);";
+                clearBoard();
+                createGridItems();
+            }
+
+
+
+        </script>
+    </body>
+</html>

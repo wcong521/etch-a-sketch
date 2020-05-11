@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    background-color: #393E41;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: white;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 42px;
+}
+
+#subtitle {
+    color: white;
+    position: fixed;
+    top: 19%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 16px;
+
+    font-style: italic;
+}
+
+button {
+
+    /* placement */
+    position: fixed;
+    top: 23%;
+    left: 61.5%;
+    transform: translate(-50%, 0);
+
+    /* styling */
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 6px;
+
+    color: white;
+    background-color: #393E41;
+
+    font-size: 12px;
+
+    font-weight: bold;
+    transition: background 0.2s ease;
+
+    outline: none;
+}
+
+button:hover {
+    box-shadow: 0 5px 10px rgba(50, 50, 50, 0.8), 0 15px 40px rgba(50,50,50,.5);
+
+    color: white;
+    background-color: #44BBA4;
+    cursor: pointer;
+}
+
+.grid-container {
+    /* placement */
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 550px;
+    width: 550px;
+
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+
+    /* styling */
+    box-shadow: 0 5px 10px rgba(50, 50, 50, 0.8), 0 15px 40px rgba(50,50,50,.5);
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 1);
+    /* border: 1px solid black; */
+    text-align: center;
+    transition: background 0.1s ease;
+}
+
+.color-select-container {
+    position: fixed;
+    top: 27%;
+    left: 30%;
+    
+}
+
+.color-select {
+    border-radius: 50%;
+    margin: 20px;
+    width: 45px;
+    height: 45px;
+
+    transition: all .1s ease-in-out;
+    
+}
+
+.color-select:hover {
+    box-shadow: 0 5px 10px rgba(50, 50, 50, 0.8), 0 15px 40px rgba(50,50,50,.5);
+    cursor: pointer;
+
+    transform: scale(1.05);
+}
+
+.color-select img {
+    border-radius: 50%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
